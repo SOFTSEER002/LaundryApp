@@ -16,57 +16,56 @@
         android:text="Order"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#fff" />
-    <ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        >
+        android:layout_alignParentBottom="true">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/activity_vertical_margin"
-            android:paddingLeft="@dimen/activity_horizontal_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:paddingTop="50dp"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            tools:context="com.example.lenovo.laundry2.Place_Order"
+            android:background="#fff"
             android:orientation="vertical"
-            android:background="@drawable/back">
-
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingTop="50dp"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            tools:context="com.example.lenovo.laundry2.Place_Order">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="24dp"
+                android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/linearLayout1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:id="@+id/linearLayout1">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
+                        android:gravity="left"
                         android:text="Shirts/Tops"
-                        android:textSize="16dp"
-                        android:gravity="left"/>
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="0.2"
                         android:layout_height="wrap_content"
-                        android:text="Qty"
+                        android:layout_weight="0.2"
                         android:gravity="right"
+                        android:text="Qty"
                         android:textSize="16dp"
 
                         />
@@ -75,11 +74,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
+                        android:gravity="right"
                         android:text="Price"
-                        android:textSize="16dp"
-                        android:gravity="right"/>
-
-
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
@@ -89,34 +86,36 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="0.35">
+                        android:layout_weight="0.35"
+                        android:orientation="horizontal">
+
                         <Button
                             android:id="@+id/topDecBtn"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-                            android:background="@drawable/circular_button"
-                            android:text="-"
-                            android:textSize="16dp"
                             android:layout_marginRight="24dp"
+                            android:background="@drawable/circular_button"
+                            android:onClick="topDec"
+                            android:text="-"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            android:onClick="topDec"/>
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
                         <Button
                             android:id="@+id/topIncBtn"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
 
                             android:background="@drawable/circular_button"
-                            android:text="+"
-                            android:textSize="16dp"
-                            android:textColor="@android:color/white"
-                            android:textStyle="bold"
                             android:onClick="topInc"
-                            />
+                            android:text="+"
+                            android:textColor="@android:color/white"
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>
@@ -125,31 +124,31 @@
                         android:id="@+id/topQty"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16dp"
+                        android:layout_weight="0.2"
                         android:gravity="right"
-                        android:layout_weight="0.2"/>
+                        android:text="0"
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/topPrice"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16dp"
-                        android:gravity="right"
                         android:layout_marginRight="3dp"
-                        android:layout_weight="0.2"/>
+                        android:layout_weight="0.2"
+                        android:gravity="right"
+                        android:text="0"
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/linearLayout2"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -160,16 +159,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
+                        android:gravity="left"
                         android:text="Lowers/Jeans"
-                        android:textSize="16dp"
-                        android:gravity="left"/>
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="0.2"
                         android:layout_height="wrap_content"
-                        android:text="Qty"
+                        android:layout_weight="0.2"
                         android:gravity="right"
+                        android:text="Qty"
                         android:textSize="16dp"
 
                         />
@@ -178,11 +177,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
+                        android:gravity="right"
                         android:text="Price"
-                        android:textSize="16dp"
-                        android:gravity="right"/>
-
-
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
@@ -192,34 +189,36 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="0.35">
+                        android:layout_weight="0.35"
+                        android:orientation="horizontal">
+
                         <Button
-                            android:onClick="lowerDec"
                             android:id="@+id/lowerDecBtn"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginRight="24dp"
                             android:background="@drawable/circular_button"
+                            android:onClick="lowerDec"
                             android:text="-"
-                            android:textSize="16dp"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"
-                            />
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
                         <Button
-                            android:onClick="lowerInc"
                             android:id="@+id/lowerIncBtn"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
-
                             android:background="@drawable/circular_button"
+
+                            android:onClick="lowerInc"
                             android:text="+"
-                            android:textSize="16dp"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"/>
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>
@@ -228,30 +227,31 @@
                         android:id="@+id/lowerQty"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16dp"
+                        android:layout_weight="0.2"
                         android:gravity="right"
-                        android:layout_weight="0.2"/>
+                        android:text="0"
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/lowerPrice"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16dp"
-                        android:gravity="right"
+                        android:layout_marginRight="3dp"
                         android:layout_weight="0.2"
-                        android:layout_marginRight="3dp"/>
+                        android:gravity="right"
+                        android:text="0"
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/linearLayout3"
-                android:layout_marginTop="8dp" >
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -262,16 +262,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
+                        android:gravity="left"
                         android:text="Bedsheet/Curtain"
-                        android:textSize="16dp"
-                        android:gravity="left"/>
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="0.2"
                         android:layout_height="wrap_content"
-                        android:text="Qty"
+                        android:layout_weight="0.2"
                         android:gravity="right"
+                        android:text="Qty"
                         android:textSize="16dp"
 
                         />
@@ -280,11 +280,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
+                        android:gravity="right"
                         android:text="Price"
-                        android:textSize="16dp"
-                        android:gravity="right"/>
-
-
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
@@ -294,33 +292,36 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="0.35">
+                        android:layout_weight="0.35"
+                        android:orientation="horizontal">
+
                         <Button
-                            android:onClick="bedsheetDec"
                             android:id="@+id/bedsheetDecBtn"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginRight="24dp"
                             android:background="@drawable/circular_button"
+                            android:onClick="bedsheetDec"
                             android:text="-"
-                            android:textSize="16dp"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"/>
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
                         <Button
-                            android:onClick="bedsheetInc"
                             android:id="@+id/bedsheetIncBtn"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginRight="24dp"
                             android:background="@drawable/circular_button"
+                            android:onClick="bedsheetInc"
                             android:text="+"
-                            android:textSize="16dp"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"/>
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>
@@ -329,30 +330,31 @@
                         android:id="@+id/bedsheetQty"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="16dp"
+                        android:layout_weight="0.2"
                         android:gravity="right"
-                        android:layout_weight="0.2"/>
+                        android:text="0"
+                        android:textSize="16dp" />
 
                     <TextView
                         android:id="@+id/bedsheetPrice"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:gravity="right"
                         android:layout_marginRight="3dp"
-                        android:textSize="16dp"
-                        android:layout_weight="0.2"/>
+                        android:layout_weight="0.2"
+                        android:gravity="right"
+                        android:text="0"
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
             </LinearLayout>
+
             <LinearLayout
+                android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/linearLayout4"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -363,16 +365,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.35"
+                        android:gravity="left"
                         android:text="Towel/Others"
-                        android:textSize="16dp"
-                        android:gravity="left"/>
+                        android:textSize="16dp" />
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="0.2"
                         android:layout_height="wrap_content"
-                        android:text="Qty"
+                        android:layout_weight="0.2"
                         android:gravity="right"
+                        android:text="Qty"
                         android:textSize="16dp"
 
                         />
@@ -381,11 +383,9 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
+                        android:gravity="right"
                         android:text="Price"
-                        android:textSize="16dp"
-                        android:gravity="right"/>
-
-
+                        android:textSize="16dp" />
 
 
                 </LinearLayout>
@@ -395,55 +395,58 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="0.35">
+                        android:layout_weight="0.35"
+                        android:orientation="horizontal">
+
                         <Button
-                            android:onClick="otherDec"
                             android:id="@+id/otherDecBtn"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginRight="24dp"
                             android:background="@drawable/circular_button"
+                            android:onClick="otherDec"
                             android:text="-"
-                            android:textSize="16dp"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"/>
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
+
                         <Button
-                            android:onClick="otherInc"
                             android:id="@+id/otherIncBtn"
                             android:layout_width="32dp"
                             android:layout_height="32dp"
                             android:layout_marginRight="24dp"
                             android:background="@drawable/circular_button"
+                            android:onClick="otherInc"
                             android:text="+"
-                            android:textSize="16dp"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"/>
+                            android:textSize="16dp"
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/otherQty"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/otherQty"
-                        android:text="0"
-                        android:textSize="16dp"
+                        android:layout_weight="0.2"
                         android:gravity="right"
-                        android:layout_weight="0.2"/>
+                        android:text="0"
+                        android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/otherPrice"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:id="@+id/otherPrice"
-                        android:text="0"
-                        android:textSize="16dp"
-                        android:gravity="right"
                         android:layout_marginRight="3dp"
-                        android:layout_weight="0.2"/>
+                        android:layout_weight="0.2"
+                        android:gravity="right"
+                        android:text="0"
+                        android:textSize="16dp" />
 
                 </LinearLayout>
 
@@ -451,54 +454,53 @@
 
 
             <RadioGroup
+                android:id="@+id/radioService"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="30dp"
                 android:gravity="center_horizontal"
-                android:id="@+id/radioService">
+                android:orientation="horizontal">
+
                 <RadioButton
                     android:id="@+id/washRB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Wash"
                     android:layout_marginRight="8dp"
-                    android:onClick="clickradioButton"
                     android:checked="true"
-                    />
+                    android:onClick="clickradioButton"
+                    android:text="Wash" />
+
                 <RadioButton
                     android:id="@+id/ironRB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Iron"
                     android:layout_marginRight="8dp"
                     android:onClick="clickradioButton"
-                    />
+                    android:text="Iron" />
+
                 <RadioButton
                     android:id="@+id/bothRB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Wash and Iron"
                     android:layout_marginRight="8dp"
                     android:onClick="clickradioButton"
-                    />
+                    android:text="Wash and Iron" />
             </RadioGroup>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="16dp"
-                >
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Pickup Date :"
+                    android:layout_marginRight="16dp"
                     android:layout_weight="0.2"
                     android:gravity="left"
-                    android:layout_marginRight="16dp"
+                    android:text="Pickup Date :"
 
                     />
             </LinearLayout>
@@ -506,41 +508,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="16dp"
-                >
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
                 <DatePicker
-                    android:layout_width="wrap_content"
-                    android:layout_height="220dp"
                     android:id="@+id/date_picker"
-                    android:datePickerMode="spinner"
-                    ></DatePicker>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:datePickerMode="calendar"></DatePicker>
             </LinearLayout>
-
-
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_marginTop="8dp"
-                >
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:text="Pickup Time :"
-                    android:layout_weight="0.2"
-                    android:gravity="right"
-                    android:layout_marginRight="16dp"
-
-                    />
 
                 <TimePicker
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/time_picker"></TimePicker>
+                    android:id="@+id/time_picker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></TimePicker>
 
 
             </LinearLayout>
@@ -548,20 +538,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="bottom"
                 android:layout_marginBottom="8dp"
-                >
+                android:gravity="bottom">
 
                 <Button
+                    android:id="@+id/add_to_bucket"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Add to Bucket"
                     android:background="#64B5F6"
-                    android:textColor="@android:color/white"
-                    android:onClick="placeOrder_database"
-
-
-                    android:id="@+id/button2" />
+                    android:text="Add to Bucket"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
         </LinearLayout>
