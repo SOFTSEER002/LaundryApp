@@ -92,9 +92,13 @@ public class PlaceOrderActivity extends AppCompatActivity {
                 String time = hours + ":" + minutes;
                 Log.e("msg", "onClick: " + top + "\n" + lower + "\n" + bed_sheets + "\n" + others + "\n" + day + "\n" + time);
                 cart_total = top + lower + bed_sheets + others;
-                dbHelper.insert(top, lower, bed_sheets, others,
-                        wash, iron, do_both, cart_total, day, time);
-
+                if (top == 0 && lower == 0 && bed_sheets == 0 && others == 0) {
+                    Toast.makeText(PlaceOrderActivity.this, "cart can't be empty", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    dbHelper.insert(top, lower, bed_sheets, others,
+                            wash, iron, do_both, cart_total, day, time);
+                }
                 startActivity(new Intent(PlaceOrderActivity.this, CartActivity.class));
 
             }

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class PriceForLaundry extends AppCompatActivity {
     int imageLaundry[] = {R.drawable.tshirt, R.drawable.jeans, R.drawable.bedsheests, R.drawable.towel};
@@ -18,12 +19,14 @@ public class PriceForLaundry extends AppCompatActivity {
     RecyclerAdapter recyclerAdapter;
     RecyclerView recyclerView;
     Button place_order;
+    ImageView go_to_cart_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_price_for_laundry);
         recyclerView = findViewById(R.id.recycler_view);
+        go_to_cart_btn = findViewById(R.id.go_to_cart);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -34,6 +37,12 @@ public class PriceForLaundry extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(PriceForLaundry.this, PlaceOrderActivity.class));
+            }
+        });
+        go_to_cart_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PriceForLaundry.this, CartActivity.class));
             }
         });
     }

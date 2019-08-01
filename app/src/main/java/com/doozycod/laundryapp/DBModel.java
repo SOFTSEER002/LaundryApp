@@ -2,9 +2,26 @@ package com.doozycod.laundryapp;
 
 public class DBModel {
 
-    int top_clothes, jeans_lower, bedsheets, towels, wash_only, iron_only, doboth, final_price;
+
+    int top_clothes;
+    int jeans_lower;
+    int bedsheets;
+    int towels;
+    int wash_only;
+    int iron_only;
+    int doboth;
+    int final_price;
     String date, time;
 
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getTop_clothes() {
         return top_clothes;

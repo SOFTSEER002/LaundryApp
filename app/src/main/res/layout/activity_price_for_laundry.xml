@@ -6,15 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".PriceForLaundry">
 
-    <TextView
+    <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#35D7EC"
-        android:padding="15dp"
-        android:text="Laundry"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textColor="#fff" />
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/go_to_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_shopping_cart_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Laundry"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#fff" />
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
@@ -38,7 +50,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:background="#35D7EC"
         android:text="place Order"
         android:textColor="#FFF" />

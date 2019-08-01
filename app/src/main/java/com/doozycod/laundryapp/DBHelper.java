@@ -11,15 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBHelper extends SQLiteOpenHelper {
-    private static final String DB_NAME = "laundry.db";
-    private static final String TABLE_NAME = "laundryOrdersTable";
-    private static final String IRONANDWASH = "doboth";
-    private static final String WASH_ONLY = "wash_only";
-    private static final String IRON_ONLY = "iron_only";
-    private static final String TOP_CLOTHES = "top_clothes";
-    private static final String JEANS_LOWER = "jeans_lower";
-    private static final String BEDSHEETS = "bedsheets";
-    private static final String OTHERS = "towels";
+     static final String DB_NAME = "laundry.db";
+     static final String TABLE_NAME = "laundryOrdersTable";
+     static final String SIGNUP_TABLE_NAME = "SIGNUP_TABLE_LAUNDRY";
+     static final String IRONANDWASH = "doboth";
+     static final String WASH_ONLY = "wash_only";
+     static final String IRON_ONLY = "iron_only";
+     static final String TOP_CLOTHES = "top_clothes";
+     static final String JEANS_LOWER = "jeans_lower";
+     static final String BEDSHEETS = "bedsheets";
+     static final String OTHERS = "towels";
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, 1);
@@ -27,9 +28,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(column_id integer primary key,top_clothes integer,jeans_lower integer,bedsheets integer," +
+        sqLiteDatabase.execSQL("create table " + TABLE_NAME + "(column_id integer primary key, top_clothes integer,jeans_lower integer,bedsheets integer," +
                 "towels integer,wash_only integer,iron_only integer,doboth integer, final_price integer,date text,time text)");
-
+        sqLiteDatabase.execSQL("create table " + SIGNUP_TABLE_NAME + "(user_id integer primary key, first_name text,last_name text," +
+                "email_id text,phone_number integer,password text)");
     }
 
     @Override
@@ -57,6 +59,7 @@ public class DBHelper extends SQLiteOpenHelper {
             do {
 //                creating DatabaseModel object to set the list using by Pojo
                 DBModel model = new DBModel();
+                model.setId((cursor).getInt(0));
                 model.setTop_clothes((cursor).getInt(1));
                 model.setJeans_lower((cursor).getInt(2));
                 model.setBedsheets((cursor).getInt(3));
@@ -78,6 +81,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return modelList;
     }
 
+    //Delete single item from Table
+    public void deleteEntry(String item_id) {
+
+        SQLiteDatabase ourDatabase = this.getWritableDatabase();
+        ourDatabase.delete(TABLE_NAME, "column_id" + " = '" + item_id + "'", null);
+    }
+
     public boolean insert(int top_clothes, int jeans_lower, int bedsheets, int towels, int wash_only, int iron_only, int doboth, int final_price, String date, String time) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -92,6 +102,18 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("date", date);
         contentValues.put("time", time);
         db.insert(TABLE_NAME, null, contentValues);
+        return true;
+    }
+
+    public boolean insertSignup(String first_name, String last_name, String email_id, String phone_number, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("first_name", first_name);
+        contentValues.put("last_name", last_name);
+        contentValues.put("email_id", email_id);
+        contentValues.put("phone_number", phone_number);
+        contentValues.put("password", password);
+        db.insert(SIGNUP_TABLE_NAME, null, contentValues);
         return true;
     }
 
