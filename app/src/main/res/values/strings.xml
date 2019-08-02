@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Laundry App</string>
     <string name="place_order_text">Above Price are for only wash if you want to know price of Only Iron or Wash and Iron you Laundry you can change when you place order</string>
+    <string name="full_name">Full name</string>
 </resources>

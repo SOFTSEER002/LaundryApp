@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.doozycod.laundryapp.Models.DBModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +61,9 @@ public class PlaceOrderActivity extends AppCompatActivity {
         tp = findViewById(R.id.time_picker);
         add_to_bucket = findViewById(R.id.add_to_bucket);
         dbModelList = dbHelper.getDataFromDbForHistory();
+        if (radioService.getCheckedRadioButtonId() == R.id.washRB) {
+            wash = 1;
+        }
         for (int i = 0; i < dbModelList.size(); i++) {
             Log.e("msg", "onCreate: " + dbModelList.get(i).getFinal_price() + "\n" + dbModelList.get(i).getTop_clothes() + "\n" + dbModelList.get(i).getBedsheets());
         }

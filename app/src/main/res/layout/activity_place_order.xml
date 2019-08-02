@@ -11,9 +11,15 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#35D7EC"
+        android:background="#F4505F"
         android:padding="15dp">
-
+        <ImageView
+            android:id="@+id/go_to_profile"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/cart_items"
+            android:src="@drawable/profile" />
         <ImageView
             android:id="@+id/cart_items"
             android:layout_width="wrap_content"
@@ -22,7 +28,7 @@
             android:src="@drawable/ic_shopping_cart_black_24dp" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Order"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -557,7 +563,7 @@
                     android:id="@+id/add_to_bucket"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#64B5F6"
+                    android:background="#1BBEE9"
                     android:text="Add to Bucket"
                     android:textColor="@android:color/white" />
             </LinearLayout>

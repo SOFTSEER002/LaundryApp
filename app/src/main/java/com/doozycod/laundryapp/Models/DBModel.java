@@ -1,4 +1,4 @@
-package com.doozycod.laundryapp;
+package com.doozycod.laundryapp.Models;
 
 public class DBModel {
 

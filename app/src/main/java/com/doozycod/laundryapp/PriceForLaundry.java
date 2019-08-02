@@ -19,7 +19,7 @@ public class PriceForLaundry extends AppCompatActivity {
     RecyclerAdapter recyclerAdapter;
     RecyclerView recyclerView;
     Button place_order;
-    ImageView go_to_cart_btn;
+    ImageView go_to_cart_btn, profile_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,7 @@ public class PriceForLaundry extends AppCompatActivity {
         setContentView(R.layout.activity_price_for_laundry);
         recyclerView = findViewById(R.id.recycler_view);
         go_to_cart_btn = findViewById(R.id.go_to_cart);
+        profile_btn = findViewById(R.id.go_to_profile);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -43,6 +44,12 @@ public class PriceForLaundry extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(PriceForLaundry.this, CartActivity.class));
+            }
+        });
+        profile_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PriceForLaundry.this, ProfileActivity.class));
             }
         });
     }

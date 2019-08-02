@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#35D7EC"
+        android:background="#1BBEE9"
         android:padding="15dp"
         android:text="Remove Item"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -46,7 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="4dp"
                 android:layout_weight="1"
-                android:background="#35D7EC"
+                android:background="#1BBEE9"
                 android:text="remove"
                 android:textColor="#fff" />
 
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
                 android:layout_weight="1"
-                android:background="#35D7EC"
+                android:background="#1BBEE9"
                 android:text="Cancel"
                 android:textColor="#fff" />
         </LinearLayout>

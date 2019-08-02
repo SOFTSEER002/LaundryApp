@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CartActivity"></activity>
+        <activity android:name=".SavedAddress"></activity>
+        <activity android:name=".OrderPlacedActivity" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".CartActivity" />
         <activity android:name=".PlaceOrderActivity" />
         <activity android:name=".PriceForLaundry" />
         <activity android:name=".LoginActivity" />

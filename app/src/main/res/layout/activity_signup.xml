@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#35D7EC"
+        android:background="#F4505F"
         android:padding="15dp"
         android:text="Sign Up"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -89,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:background="#35D7EC"
+            android:background="#1BBEE9"
             android:text="sign up"
             android:textColor="#fff" />
 

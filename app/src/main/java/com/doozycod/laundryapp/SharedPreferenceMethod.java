@@ -41,6 +41,14 @@ public class SharedPreferenceMethod {
         return email || password;
     }
 
+    public void getUser() {
+        SharedPreferences sp = context.getSharedPreferences("laundryAPP", Context.MODE_PRIVATE);
+        spemail = sp.getString("email", "");
+        spfirst_name = sp.getString("firstname", "");
+        splast_name = sp.getString("lastname", "");
+        spMobileNumber = sp.getString("spphone", "");
+    }
+
     public void Logout() {
         SharedPreferences sp = context.getSharedPreferences("laundryAPP", Context.MODE_PRIVATE);
         SharedPreferences.Editor sp_editior = sp.edit();

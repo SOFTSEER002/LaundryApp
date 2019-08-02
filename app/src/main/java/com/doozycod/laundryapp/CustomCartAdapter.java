@@ -12,6 +12,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.doozycod.laundryapp.Models.DBModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +21,12 @@ public class CustomCartAdapter extends RecyclerView.Adapter<CustomCartAdapter.Ca
     Context context;
     List<DBModel> dbList = new ArrayList<>();
     DBHelper dbHelper;
+    OnItemClick mCallback;
 
-    public CustomCartAdapter(Context context, List<DBModel> dbList) {
+    public CustomCartAdapter(Context context, List<DBModel> dbList, OnItemClick mCallback) {
         this.context = context;
         this.dbList = dbList;
+        this.mCallback = mCallback;
     }
 
     @NonNull
@@ -42,9 +46,26 @@ public class CustomCartAdapter extends RecyclerView.Adapter<CustomCartAdapter.Ca
         holder.JeansLower.setText(String.valueOf(dbList.get(position).getJeans_lower()));
         holder.Bedsheets.setText(String.valueOf(dbList.get(position).getBedsheets()));
         holder.Towels.setText(String.valueOf(dbList.get(position).getTowels()));
-        holder.wash.setText(String.valueOf(dbList.get(position).getWash_only()));
-        holder.iron.setText(String.valueOf(dbList.get(position).getIron_only()));
-        holder.cart_price.setText("\u20B9 " + String.valueOf(dbList.get(position).getFinal_price()));
+        if (dbList.get(position).getDoboth() == 1) {
+            holder.iron.setText("Yes");
+            holder.wash.setText("Yes");
+        } else {
+            if (dbList.get(position).getWash_only() == 0) {
+                holder.wash.setText("No");
+            } else {
+                holder.wash.setText("Yes");
+
+            }
+            if (dbList.get(position).getIron_only() == 0) {
+
+                holder.iron.setText("No");
+            } else {
+                holder.iron.setText("Yes");
+            }
+        }
+
+
+        holder.cart_price.setText("\u20B9 " + dbList.get(position).getFinal_price());
         holder.remove_from_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +87,7 @@ public class CustomCartAdapter extends RecyclerView.Adapter<CustomCartAdapter.Ca
                 dbList.remove(position);
                 notifyDataSetChanged();
                 removeDialog.dismiss();
+                mCallback.onClick(dbList);
 
             }
         });
