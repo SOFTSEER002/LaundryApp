@@ -96,9 +96,10 @@ public class OrderPlacedActivity extends AppCompatActivity {
 
                 if (dbHelper.getAddressFromDb().size() > 0 && address_from_db.getVisibility() == View.VISIBLE) {
 
-                    dbHelper.insertOrder(addressModels.get(0).getEmail(), addressModels.get(0).getPhone_no(), addressModels.get(0).getAddress(), bundle.getInt("coulmn_id"));
-                    startActivity(new Intent(OrderPlacedActivity.this,MyOrdersActivity.class));
+                    if (dbHelper.insertOrder(addressModels.get(0).getEmail(), addressModels.get(0).getPhone_no(), addressModels.get(0).getAddress(), bundle.getInt("coulmn_id"))) {
+                        startActivity(new Intent(OrderPlacedActivity.this, MyOrdersActivity.class));
 
+                    }
                 } else {
                     if (et_full_name.getText().toString().equals("")) {
                         et_full_name.setError("Enter your full name");

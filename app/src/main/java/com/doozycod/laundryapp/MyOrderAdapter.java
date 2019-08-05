@@ -59,10 +59,10 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.AddHolde
     @Override
     public void onBindViewHolder(@NonNull MyOrderAdapter.AddHolder holder, final int position) {
         getOrder();
-        holder.tv_top_clothes.setText(top_clothes);
-        holder.tv_jeans_lower.setText(jeans_lower);
-        holder.tv_bedsheets.setText(bedsheets);
-        holder.tv_towels.setText(towels);
+        holder.tv_top_clothes.setText(String.valueOf(top_clothes));
+        holder.tv_jeans_lower.setText(String.valueOf(jeans_lower));
+        holder.tv_bedsheets.setText(String.valueOf(bedsheets));
+        holder.tv_towels.setText(String.valueOf(towels));
         if (dbModelList.get(position).getDoboth() == 1) {
             holder.tv_wash_only.setText("yes");
             holder.tv_iron_only.setText("yes");
@@ -94,7 +94,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.AddHolde
 
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
         for (int i = 0; i < orderModelList.size(); i++) {
-            String query = "select * from " + TABLE_NAME + " where " + "column_id" + " = '" + orderModelList.get(i).getColumn_id();
+            String query = "select * from " + TABLE_NAME + " where " + "column_id" + " = " + orderModelList.get(i).getColumn_id();
             Cursor cursor = sqLiteDatabase.rawQuery(query, null);
             if (cursor.moveToFirst()) {
                 do {

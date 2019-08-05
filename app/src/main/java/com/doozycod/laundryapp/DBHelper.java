@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.doozycod.laundryapp.Models.AddressModel;
 import com.doozycod.laundryapp.Models.DBModel;
+import com.doozycod.laundryapp.Models.OrderModel;
 import com.doozycod.laundryapp.Models.SignUPModel;
 
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "email_id text,phone_number integer,password text)");
         sqLiteDatabase.execSQL("create table " + ADDRESS_TABLE_NAME + "(user_id integer primary key, full_name text," +
                 "email_id text,phone_number integer,address text)");
-        sqLiteDatabase.execSQL("create table " + USER_ORDER + "(id integer primary key, order_email text,phone_number integer,address text,column_id integer)");
+        sqLiteDatabase.execSQL("create table " + USER_ORDER + "(id integer primary key, order_email text,phone_number text,address text,column_id integer)");
     }
 
     @Override
@@ -132,7 +133,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean insertOrder(String order_email, String phone_number,String address,int column_id) {
+    public boolean insertOrder(String order_email, String phone_number, String address, int column_id) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("order_email", order_email);
@@ -166,6 +167,38 @@ public class DBHelper extends SQLiteOpenHelper {
                 model.setEmail((cursor).getString(2));
                 model.setAddress((cursor).getString(4));
                 model.setPhone_no((cursor).getString(3));
+                modelList.add(model);
+            } while (cursor.moveToNext());
+        }
+
+
+        Log.d("Cart data", modelList.toString());
+
+
+        return modelList;
+    }
+
+    public List<OrderModel> getOrderFromDb() {
+
+        // Declaring a List object
+        List<OrderModel> modelList = new ArrayList<>();
+
+//        String for query
+        String query = "select * from " + USER_ORDER;
+        SQLiteDatabase db = this.getWritableDatabase();
+
+//        creating cursor object to use query to get the data from table
+        Cursor cursor = db.rawQuery(query, null);
+
+//        Condition for set the data in pojo class
+        if (cursor.moveToFirst()) {
+            do {
+//              creating DatabaseModel object to set the list using by Pojo
+                OrderModel model = new OrderModel();
+                model.setOrder_email((cursor).getString(1));
+                model.setPhone_number((cursor).getString(2));
+                model.setAddress((cursor).getString(3));
+                model.setColumn_id((cursor).getInt(4));
                 modelList.add(model);
             } while (cursor.moveToNext());
         }
