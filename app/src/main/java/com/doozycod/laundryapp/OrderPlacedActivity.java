@@ -3,6 +3,7 @@ package com.doozycod.laundryapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,10 +12,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.doozycod.laundryapp.Models.AddressModel;
 
 import java.util.List;
+
+import static com.doozycod.laundryapp.DBHelper.TABLE_NAME;
 
 public class OrderPlacedActivity extends AppCompatActivity {
     EditText et_full_name, et_email, et_phone_number, et_house_no, et_address, et_pincode, et_city;
@@ -88,6 +92,7 @@ public class OrderPlacedActivity extends AppCompatActivity {
             db_phone.setText(addressModels.get(0).getPhone_no());
 
         } else {
+            change_address.setVisibility(View.GONE);
             pick_details.setVisibility(View.VISIBLE);
         }
         submit_order.setOnClickListener(new View.OnClickListener() {
@@ -128,6 +133,9 @@ public class OrderPlacedActivity extends AppCompatActivity {
                         dbHelper.insertOrder(et_email.getText().toString(), et_phone_number.getText().toString(), et_house_no.getText().toString()
                                 + "," + et_address.getText().toString() + "," + et_city.getText().toString() + "," + et_pincode.getText().toString(), bundle.getInt("coulmn_id"));
                         Log.e("check", "onClick: " + " Entered!");
+                        startActivity(new Intent(OrderPlacedActivity.this, MyOrdersActivity.class));
+
+                        Toast.makeText(OrderPlacedActivity.this, "Order Placed!", Toast.LENGTH_SHORT).show();
                     }
                 }
 

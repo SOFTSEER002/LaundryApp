@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.doozycod.laundryapp.Models.AddressModel;
 
@@ -21,6 +22,7 @@ public class SavedAddress extends AppCompatActivity {
     SavedAddressAdapter savedAddressAdapter;
     List<AddressModel> addressModels;
     ImageView back_btn;
+    TextView add_new_address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class SavedAddress extends AppCompatActivity {
         addressModels = new ArrayList<>();
         addressModels = dbHelper.getAddressFromDb();
         back_btn = findViewById(R.id.back_cart);
-
+        add_new_address = findViewById(R.id.add_new_address);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

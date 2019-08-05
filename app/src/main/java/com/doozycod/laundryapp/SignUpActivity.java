@@ -76,9 +76,10 @@ public class SignUpActivity extends AppCompatActivity {
                         if (password_et.getText().toString().length() < 6) {
                             Toast.makeText(SignUpActivity.this, "password must have more than 6 characters", Toast.LENGTH_SHORT).show();
                         } else {
-                            dbHelper.insertSignup(first_name_et.getText().toString(), last_name_et.getText().toString(), email_et.getText().toString(), countrycode+phone_number_et.getText().toString(), password_et.getText().toString());
-                            sharedPreferenceMethod.spInsert(email_et.getText().toString(), password_et.getText().toString(), first_name_et.getText().toString(), last_name_et.getText().toString(), countrycode+phone_number_et.getText().toString());
+                            dbHelper.insertSignup(first_name_et.getText().toString(), last_name_et.getText().toString(), email_et.getText().toString(), countrycode + phone_number_et.getText().toString(), password_et.getText().toString());
+                            sharedPreferenceMethod.spInsert(email_et.getText().toString(), password_et.getText().toString(), first_name_et.getText().toString(), last_name_et.getText().toString(), countrycode + phone_number_et.getText().toString());
                             startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                            Toast.makeText(SignUpActivity.this, "Successfully Signed up!", Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }

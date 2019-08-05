@@ -93,7 +93,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     //Delete single item from Table
     public void deleteEntry(String item_id) {
-
         SQLiteDatabase ourDatabase = this.getWritableDatabase();
         ourDatabase.delete(TABLE_NAME, "column_id" + " = '" + item_id + "'", null);
     }

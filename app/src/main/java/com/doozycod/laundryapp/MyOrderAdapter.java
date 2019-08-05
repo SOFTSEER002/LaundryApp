@@ -30,6 +30,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.AddHolde
     Context context;
     List<OrderModel> orderModelList = new ArrayList<>();
     List<DBModel> dbModelList = new ArrayList<>();
+    List<DBModel> dbList = new ArrayList<>();
     DBHelper dbHelper;
     int top_clothes;
     int jeans_lower;
@@ -59,15 +60,30 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.AddHolde
     @Override
     public void onBindViewHolder(@NonNull MyOrderAdapter.AddHolder holder, final int position) {
         getOrder();
-        holder.tv_top_clothes.setText(String.valueOf(top_clothes));
-        holder.tv_jeans_lower.setText(String.valueOf(jeans_lower));
-        holder.tv_bedsheets.setText(String.valueOf(bedsheets));
-        holder.tv_towels.setText(String.valueOf(towels));
-        if (dbModelList.get(position).getDoboth() == 1) {
-            holder.tv_wash_only.setText("yes");
-            holder.tv_iron_only.setText("yes");
-        }
+        holder.tv_top_clothes.setText(String.valueOf(dbList.get(position).getTop_clothes()));
+        holder.tv_jeans_lower.setText(String.valueOf(dbList.get(position).getJeans_lower()));
+        holder.tv_bedsheets.setText(String.valueOf(dbList.get(position).getBedsheets()));
+        holder.tv_towels.setText(String.valueOf(dbList.get(position).getTowels()));
+        if (dbList.get(position).getWash_only() == 1) {
+            holder.tv_wash_only.setText("Yes");
+            holder.tv_iron_only.setText("No");
 
+        } else if (dbList.get(position).getIron_only() == 1) {
+            holder.tv_wash_only.setText("No");
+            holder.tv_iron_only.setText("Yes");
+
+        } else {
+            if (dbList.get(position).getDoboth() == 1) {
+                holder.tv_wash_only.setText("Yes");
+                holder.tv_iron_only.setText("Yes");
+            } else {
+                holder.tv_wash_only.setText("No");
+                holder.tv_iron_only.setText("No");
+            }
+        }
+//        SQLiteDatabase db = dbHelper.getWritableDatabase();
+//        db.execSQL("DELETE FROM " + TABLE_NAME); //delete all rows in a table
+//        db.close();
     }
 
     @Override
@@ -92,27 +108,43 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.AddHolde
 
     void getOrder() {
 
-        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        for (int i = 0; i < orderModelList.size(); i++) {
-            String query = "select * from " + TABLE_NAME + " where " + "column_id" + " = " + orderModelList.get(i).getColumn_id();
-            Cursor cursor = sqLiteDatabase.rawQuery(query, null);
-            if (cursor.moveToFirst()) {
-                do {
-                    top_clothes = cursor.getInt(cursor.getColumnIndex("top_clothes"));
-                    jeans_lower = cursor.getInt(cursor.getColumnIndex("jeans_lower"));
-                    bedsheets = cursor.getInt(cursor.getColumnIndex("bedsheets"));
-                    towels = cursor.getInt(cursor.getColumnIndex("towels"));
-                    wash_only = cursor.getInt(cursor.getColumnIndex("wash_only"));
-                    iron_only = cursor.getInt(cursor.getColumnIndex("iron_only"));
-                    doboth = cursor.getInt(cursor.getColumnIndex("doboth"));
-                    final_price = cursor.getInt(cursor.getColumnIndex("final_price"));
-                    date = cursor.getString(cursor.getColumnIndex("date"));
-                    time = cursor.getString(cursor.getColumnIndex("time"));
+            SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+            for (int i1 = 0; i1 < orderModelList.size(); i1++) {
+                String query = "select * from " + TABLE_NAME + " where " + "column_id" + " = " + orderModelList.get(i1).getColumn_id();
+                Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+                if (cursor.moveToFirst()) {
+                    do {
+                        DBModel model = new DBModel();
 
-                } while (cursor.moveToNext());
+
+                        top_clothes = cursor.getInt(cursor.getColumnIndex("top_clothes"));
+                        jeans_lower = cursor.getInt(cursor.getColumnIndex("jeans_lower"));
+                        bedsheets = cursor.getInt(cursor.getColumnIndex("bedsheets"));
+                        towels = cursor.getInt(cursor.getColumnIndex("towels"));
+                        wash_only = cursor.getInt(cursor.getColumnIndex("wash_only"));
+                        iron_only = cursor.getInt(cursor.getColumnIndex("iron_only"));
+                        doboth = cursor.getInt(cursor.getColumnIndex("doboth"));
+                        final_price = cursor.getInt(cursor.getColumnIndex("final_price"));
+                        date = cursor.getString(cursor.getColumnIndex("date"));
+                        time = cursor.getString(cursor.getColumnIndex("time"));
+
+
+                        model.setTop_clothes(top_clothes);
+                        model.setJeans_lower(jeans_lower);
+                        model.setBedsheets(bedsheets);
+                        model.setTowels(towels);
+                        model.setWash_only(wash_only);
+                        model.setIron_only(iron_only);
+                        model.setDoboth(doboth);
+                        model.setFinal_price(final_price);
+                        model.setDate(date);
+                        model.setTime(time);
+                        dbList.add(model);
+                    } while (cursor.moveToNext());
+
             }
-
         }
+
 
 
     }
