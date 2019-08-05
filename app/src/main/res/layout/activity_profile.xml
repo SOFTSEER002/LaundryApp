@@ -111,7 +111,7 @@
 
 
             <TextView
-                android:id="@+id/my_orders"
+                android:id="@+id/my_orders_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/ic_keyboard_arrow_right_black_24dp"

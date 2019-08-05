@@ -17,7 +17,7 @@ import static com.doozycod.laundryapp.SharedPreferenceMethod.spfirst_name;
 import static com.doozycod.laundryapp.SharedPreferenceMethod.splast_name;
 
 public class ProfileActivity extends AppCompatActivity {
-    TextView usr_name, phone_profile, email_profile, my_Address;
+    TextView usr_name, phone_profile, email_profile, my_Address, myOrders;
     DBHelper dbHelper;
     SharedPreferenceMethod sharedPreferenceMethod;
     ImageView back_btn;
@@ -36,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
         phone_profile = findViewById(R.id.phone_profile);
         email_profile = findViewById(R.id.email_profile);
         my_Address = findViewById(R.id.my_Address);
+        myOrders = findViewById(R.id.my_orders_profile);
         usr_name.setText(spfirst_name + " " + splast_name);
         email_profile.setText(spemail);
         phone_profile.setText(spMobileNumber);
@@ -50,6 +51,12 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfileActivity.this, SavedAddress.class));
+            }
+        });
+        myOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfileActivity.this, MyOrdersActivity.class));
             }
         });
         getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.statusbar));
