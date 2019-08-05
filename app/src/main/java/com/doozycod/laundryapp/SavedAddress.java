@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.doozycod.laundryapp.Models.AddressModel;
 
@@ -18,6 +20,7 @@ public class SavedAddress extends AppCompatActivity {
     RecyclerView recyclerView;
     SavedAddressAdapter savedAddressAdapter;
     List<AddressModel> addressModels;
+    ImageView back_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class SavedAddress extends AppCompatActivity {
         recyclerView = findViewById(R.id.saved_add_recycler);
         addressModels = new ArrayList<>();
         addressModels = dbHelper.getAddressFromDb();
+        back_btn = findViewById(R.id.back_cart);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -39,6 +43,11 @@ public class SavedAddress extends AppCompatActivity {
         savedAddressAdapter = new SavedAddressAdapter(this, addressModels);
         recyclerView.setAdapter(savedAddressAdapter);
 
-
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 }

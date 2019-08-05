@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
     int cart_total = 0;
     int month, date, year, hours, minutes;
     List<DBModel> dbModelList = new ArrayList<>();
+    ImageView back_btn;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -48,6 +50,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
 //        db
         dbHelper = new DBHelper(this);
 
+        back_btn = findViewById(R.id.back_btn_order);
         topQty = findViewById(R.id.topQty);
         lowerQty = findViewById(R.id.lowerQty);
         bedsheetQty = findViewById(R.id.bedsheetQty);
@@ -61,6 +64,12 @@ public class PlaceOrderActivity extends AppCompatActivity {
         tp = findViewById(R.id.time_picker);
         add_to_bucket = findViewById(R.id.add_to_bucket);
         dbModelList = dbHelper.getDataFromDbForHistory();
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         if (radioService.getCheckedRadioButtonId() == R.id.washRB) {
             wash = 1;
         }

@@ -40,7 +40,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "email_id text,phone_number integer,password text)");
         sqLiteDatabase.execSQL("create table " + ADDRESS_TABLE_NAME + "(user_id integer primary key, full_name text," +
                 "email_id text,phone_number integer,address text)");
-        sqLiteDatabase.execSQL("create table " + USER_ORDER + "(id integer primary key, order_email text,phone_number integer,address text)");
+        sqLiteDatabase.execSQL("create table " + USER_ORDER + "(id integer primary key, order_email text,phone_number integer,address text,column_id integer)");
     }
 
     @Override
@@ -97,6 +97,12 @@ public class DBHelper extends SQLiteOpenHelper {
         ourDatabase.delete(TABLE_NAME, "column_id" + " = '" + item_id + "'", null);
     }
 
+    public void deleteAddress(String item_id) {
+
+        SQLiteDatabase ourDatabase = this.getWritableDatabase();
+        ourDatabase.delete(ADDRESS_TABLE_NAME, "user_id" + " = '" + item_id + "'", null);
+    }
+
     public boolean insert(int top_clothes, int jeans_lower, int bedsheets, int towels, int wash_only, int iron_only, int doboth, int final_price, String date, String time) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -126,13 +132,15 @@ public class DBHelper extends SQLiteOpenHelper {
         return true;
     }
 
-    public boolean insertOrder(String order_email, String phone_number) {
+    public boolean insertOrder(String order_email, String phone_number,String address,int column_id) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("order_email", order_email);
         contentValues.put("phone_number", phone_number);
+        contentValues.put("address", address);
+        contentValues.put("column_id", column_id);
 
-        db.insert(ADDRESS_TABLE_NAME, null, contentValues);
+        db.insert(USER_ORDER, null, contentValues);
         return true;
     }
 

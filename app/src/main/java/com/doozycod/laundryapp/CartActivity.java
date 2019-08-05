@@ -50,7 +50,12 @@ public class CartActivity extends AppCompatActivity implements OnItemClick {
         checkout_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CartActivity.this, OrderPlacedActivity.class));
+                Intent intent = new Intent(CartActivity.this, OrderPlacedActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("coulmn_id", dbModelList.get(0).getId());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
         customCartAdapter = new CustomCartAdapter(this, dbModelList, this);

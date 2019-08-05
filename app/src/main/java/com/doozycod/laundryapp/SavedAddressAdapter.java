@@ -64,7 +64,7 @@ public class SavedAddressAdapter extends RecyclerView.Adapter<SavedAddressAdapte
         remove_item_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbHelper.deleteEntry(String.valueOf(dbList.get(position).getUserId()));
+                dbHelper.deleteAddress(String.valueOf(dbList.get(position).getUserId()));
                 dbList.remove(position);
                 notifyDataSetChanged();
                 removeDialog.dismiss();

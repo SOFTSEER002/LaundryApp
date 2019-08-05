@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SavedAddress"></activity>
+        <activity android:name=".OrderDetailsActivity"></activity>
+        <activity android:name=".MyOrdersActivity" />
+        <activity android:name=".SavedAddress" />
         <activity android:name=".OrderPlacedActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".CartActivity" />
