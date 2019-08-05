@@ -59,7 +59,14 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.AddHolde
     @Override
     public void onBindViewHolder(@NonNull MyOrderAdapter.AddHolder holder, final int position) {
         getOrder();
-
+        holder.tv_top_clothes.setText(top_clothes);
+        holder.tv_jeans_lower.setText(jeans_lower);
+        holder.tv_bedsheets.setText(bedsheets);
+        holder.tv_towels.setText(towels);
+        if (dbModelList.get(position).getDoboth() == 1) {
+            holder.tv_wash_only.setText("yes");
+            holder.tv_iron_only.setText("yes");
+        }
 
     }
 
@@ -70,19 +77,16 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.AddHolde
 
     class AddHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_top_clothes, tv_jeans_lower, tv_bedsheets, tv_towels, tv_wash_only, tv_iron_only, tv_final_price, tv_date, tv_time;
+        TextView tv_top_clothes, tv_jeans_lower, tv_bedsheets, tv_towels, tv_wash_only, tv_iron_only;
 
         public AddHolder(@NonNull View itemView) {
             super(itemView);
             tv_top_clothes = itemView.findViewById(R.id.tshirtsqty_ad);
             tv_jeans_lower = itemView.findViewById(R.id.jeansqty_ad);
-            tv_bedsheets = itemView.findViewById(R.id.saved_phone_db);
-            tv_towels = itemView.findViewById(R.id.saved_phone_db);
-            tv_wash_only = itemView.findViewById(R.id.saved_phone_db);
-            tv_iron_only = itemView.findViewById(R.id.saved_phone_db);
-            tv_time = itemView.findViewById(R.id.saved_phone_db);
-            tv_final_price = itemView.findViewById(R.id.saved_phone_db);
-            tv_date = itemView.findViewById(R.id.saved_phone_db);
+            tv_bedsheets = itemView.findViewById(R.id.bedsheetsqty_ad);
+            tv_towels = itemView.findViewById(R.id.towelqty_ad);
+            tv_wash_only = itemView.findViewById(R.id.washqty_ad);
+            tv_iron_only = itemView.findViewById(R.id.ironqty_ad);
         }
     }
 
