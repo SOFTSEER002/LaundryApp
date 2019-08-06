@@ -199,7 +199,6 @@ public class CustomCartAdapter extends RecyclerView.Adapter<CustomCartAdapter.Ca
                     cv.put("towels", towels * 3);
                     cv.put("iron_only", 1);
                     cv.put("final_price", top * 3 + jeans * 3 + bedsheets * 3 + towels * 3);
-
                     db.update(TEMP_TABLE_NAME, cv, "column_id= " + dbList.get(position).getId(), null);
                     db.update(TABLE_NAME, cv, "column_id= " + dbList.get(position).getId(), null);
                     mCallback.onClick(dbList, top * 3 + jeans * 3 + bedsheets * 3 + towels * 3);

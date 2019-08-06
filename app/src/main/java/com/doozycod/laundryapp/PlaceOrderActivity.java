@@ -3,7 +3,9 @@ package com.doozycod.laundryapp;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -42,6 +44,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
     List<DBModel> dbModelList = new ArrayList<>();
     ImageView back_btn, cart_items_place, profile_btn;
     String time;
+    SharedPreferenceMethod sharedPreferenceMethod;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +53,7 @@ public class PlaceOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_place_order);
 //        db
         dbHelper = new DBHelper(this);
-
+        sharedPreferenceMethod = new SharedPreferenceMethod(this);
         back_btn = findViewById(R.id.back_btn_order);
         cart_items_place = findViewById(R.id.cart_items_place);
         profile_btn = findViewById(R.id.go_to_profile_p);
@@ -139,6 +143,9 @@ public class PlaceOrderActivity extends AppCompatActivity {
                     dbHelper.insert(top, lower, bed_sheets, others,
                             wash, iron, do_both, cart_total, day, time);
                     dbHelper.insertTemp(top, lower, bed_sheets, others,
+                            wash, iron, do_both, cart_total, day, time);
+                    SharedPreferences sp = getApplicationContext().getSharedPreferences("laundryAPP", Context.MODE_PRIVATE);
+                    dbHelper.insertUserOrder(sp.getString("email", ""), top, lower, bed_sheets, others,
                             wash, iron, do_both, cart_total, day, time);
                 }
                 startActivity(new Intent(PlaceOrderActivity.this, CartActivity.class));
