@@ -15,7 +15,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.doozycod.laundryapp.Models.AddressModel;
+import com.doozycod.laundryapp.Models.UserOrderModel;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.doozycod.laundryapp.DBHelper.TABLE_NAME;
@@ -26,6 +29,7 @@ public class OrderPlacedActivity extends AppCompatActivity {
     DBHelper dbHelper;
     ImageView back_btn;
     List<AddressModel> addressModels;
+    List<UserOrderModel> userOrderModels;
     LinearLayout pick_details, address_from_db;
     TextView enter_your_picker, db_email, db_fullname, db_address, db_phone;
     boolean isChanged = true;
@@ -33,10 +37,19 @@ public class OrderPlacedActivity extends AppCompatActivity {
     int column_id = 0;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, PriceForLaundry.class);
+        startActivity(intent);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
+    }
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_placed);
+
         et_full_name = findViewById(R.id.fullname);
         et_email = findViewById(R.id.pickupemail);
         et_phone_number = findViewById(R.id.pickupphone);
@@ -57,8 +70,9 @@ public class OrderPlacedActivity extends AppCompatActivity {
         change_address = findViewById(R.id.change_address);
         bundle = getIntent().getExtras();
         addressModels = dbHelper.getAddressFromDb();
+        userOrderModels = dbHelper.getUserOrder();
+        final ArrayList<Serializable> myList = (ArrayList<Serializable>) getIntent().getSerializableExtra("mylist");
 
-        Log.e("msg", "onCreate: " + bundle.getInt("coulmn_id"));
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,10 +115,14 @@ public class OrderPlacedActivity extends AppCompatActivity {
 
                 if (dbHelper.getAddressFromDb().size() > 0 && address_from_db.getVisibility() == View.VISIBLE) {
 
-                    if (dbHelper.insertOrder(addressModels.get(0).getEmail(), addressModels.get(0).getPhone_no(), addressModels.get(0).getAddress(), bundle.getInt("coulmn_id"))) {
-                        startActivity(new Intent(OrderPlacedActivity.this, MyOrdersActivity.class));
 
-                    }
+                    int getId = Integer.parseInt(getIntent().getStringExtra("order_id"));
+
+                    dbHelper.insertOrder(addressModels.get(0).getEmail(), addressModels.get(0).getPhone_no(), addressModels.get(0).getAddress(), getId);
+
+                    startActivity(new Intent(OrderPlacedActivity.this, MyOrdersActivity.class));
+
+
                 } else {
                     if (et_full_name.getText().toString().equals("")) {
                         et_full_name.setError("Enter your full name");
@@ -127,12 +145,20 @@ public class OrderPlacedActivity extends AppCompatActivity {
                     if (et_pincode.getText().toString().equals("")) {
                         et_pincode.setError("Enter pincode");
                     } else {
+
                         dbHelper.insertAddress(et_full_name.getText().toString(), et_email.getText().toString(), et_phone_number.getText().toString(),
                                 et_house_no.getText().toString()
                                         + "," + et_address.getText().toString() + "," + et_city.getText().toString() + "," + et_pincode.getText().toString());
-                        dbHelper.insertOrder(et_email.getText().toString(), et_phone_number.getText().toString(), et_house_no.getText().toString()
-                                + "," + et_address.getText().toString() + "," + et_city.getText().toString() + "," + et_pincode.getText().toString(), bundle.getInt("coulmn_id"));
-                        Log.e("check", "onClick: " + " Entered!");
+                        addressModels = dbHelper.getAddressFromDb();
+
+                        for (int i = 0; i < myList.size(); i++) {
+                            Log.e("list", "onCreate: list" + myList.get(i).toString());
+                            int getId = Integer.parseInt(getIntent().getStringExtra("order_id"));
+                            dbHelper.insertOrder(addressModels.get(0).getEmail(), addressModels.get(0).getPhone_no(), addressModels.get(0).getAddress(), getId);
+                        }
+//                        int getId = Integer.parseInt(getIntent().getStringExtra("order_id"));
+//                        dbHelper.insertOrder(addressModels.get(0).getEmail(), addressModels.get(0).getPhone_no(), addressModels.get(0).getAddress(), getId);
+
                         startActivity(new Intent(OrderPlacedActivity.this, MyOrdersActivity.class));
 
                         Toast.makeText(OrderPlacedActivity.this, "Order Placed!", Toast.LENGTH_SHORT).show();

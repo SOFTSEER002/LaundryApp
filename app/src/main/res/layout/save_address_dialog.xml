@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".OrderPlacedActivity">
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F4505F"
+        android:padding="15dp">
+
+        <ImageView
+            android:id="@+id/back_order_placed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_back_button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/back_order_placed"
+            android:text="Add New Address"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#fff" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/deliver" />
+
+
+            <TextView
+                android:id="@+id/enter_your_picker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Enter your Pickup details"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="visible" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp">
+
+
+                <LinearLayout
+                    android:id="@+id/address_from_db"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/full_name_db"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Enter your Pickup details"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/full_address"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Enter your Pickup details"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/email_db"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Enter your Pickup details"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/phone_db"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="Enter your Pickup details"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pickup_de"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <EditText
+                        android:id="@+id/fullname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="@string/full_name"
+                        android:inputType="textPersonName" />
+
+                    <EditText
+                        android:id="@+id/pickupemail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <com.hbb20.CountryCodePicker
+                            android:id="@+id/ccpicker"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+
+                            android:layout_weight="0.3"
+                            android:gravity="center_vertical"></com.hbb20.CountryCodePicker>
+
+                        <EditText
+                            android:id="@+id/pickupphone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1.7"
+                            android:hint="phone no"
+                            android:inputType="phone"
+                            android:maxLength="10" />
+                    </LinearLayout>
+
+                    <EditText
+                        android:id="@+id/house_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="House no/Flat no"
+                        android:inputType="textPostalAddress" />
+
+                    <EditText
+                        android:id="@+id/address_pickup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="Full Address"
+                        android:inputType="textPostalAddress" />
+
+                    <EditText
+                        android:id="@+id/city_state"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="City &amp; state"
+                        android:inputType="textPostalAddress" />
+
+                    <EditText
+                        android:id="@+id/pickup_pincode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:hint="pincode"
+                        android:inputType="phone"
+                        android:maxLength="6" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/review_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#1BBEE9"
+                android:text="save address"
+                android:textColor="#fff" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

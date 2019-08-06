@@ -78,8 +78,10 @@ public class SignUpActivity extends AppCompatActivity {
                         } else {
                             dbHelper.insertSignup(first_name_et.getText().toString(), last_name_et.getText().toString(), email_et.getText().toString(), countrycode + phone_number_et.getText().toString(), password_et.getText().toString());
                             sharedPreferenceMethod.spInsert(email_et.getText().toString(), password_et.getText().toString(), first_name_et.getText().toString(), last_name_et.getText().toString(), countrycode + phone_number_et.getText().toString());
-                            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-                            Toast.makeText(SignUpActivity.this, "Successfully Signed up!", Toast.LENGTH_SHORT).show();
+                            sharedPreferenceMethod.saveLogin(true);
+                            startActivity(new Intent(SignUpActivity.this, PriceForLaundry.class));
+
+//                            Toast.makeText(SignUpActivity.this, "Successfully Signed up!", Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }

@@ -7,43 +7,55 @@
     android:orientation="vertical"
     tools:context=".SignUpActivity">
 
-
-    <TextView
+    <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F4505F"
-        android:padding="15dp"
-        android:text="Sign Up"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#fff" />
+        android:padding="15dp">
 
-    <ScrollView
+        <ImageView
+            android:id="@+id/back_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_back_button" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/back_profile"
+            android:text="Edit Profile"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#fff" />
+    </RelativeLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_margin="20dp"
-                android:src="@drawable/logo" />
-
             <EditText
-                android:id="@+id/firstname"
+                android:id="@+id/firstname_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginRight="10dp"
                 android:hint="First Name"
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/lastname"
+                android:id="@+id/lastname_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -53,7 +65,7 @@
                 android:inputType="textPersonName" />
 
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/email_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -70,18 +82,20 @@
                 android:weightSum="2">
 
                 <com.hbb20.CountryCodePicker
-                    android:id="@+id/ccp"
+                    android:id="@+id/ccp_profile"
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="0.2"
                     android:gravity="center_vertical"></com.hbb20.CountryCodePicker>
 
                 <EditText
-                    android:id="@+id/phone"
+                    android:id="@+id/phone_profile"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.8"
@@ -90,60 +104,28 @@
                     android:maxLength="10" />
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/password"
+            <Button
+                android:id="@+id/change_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:hint="Password"
-                android:inputType="textPassword" />
-
-            <EditText
-                android:id="@+id/retype_pass"
-                android:layout_width="match_parent"
-
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:hint="Confirm Password"
-                android:inputType="textPassword" />
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:visibility="gone"
+                android:layout_marginRight="30dp"
+                android:background="#1BBEE9"
+                android:text="change password"
+                android:textColor="#fff" />
 
             <Button
-                android:id="@+id/sign_up"
+                android:id="@+id/update_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="30dp"
                 android:background="#1BBEE9"
-                android:text="sign up"
+                android:text="Update Profile"
                 android:textColor="#fff" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="horizontal"
-                android:weightSum="2">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="Existing user? "
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                <TextView
-                    android:id="@+id/login_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text=" Click Here!"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </LinearLayout>

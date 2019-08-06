@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface OnItemClick {
 
-    void onClick(List<DBModel> list);
+    void onClick(List<DBModel> list,int cartvalue);
 }

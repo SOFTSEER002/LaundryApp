@@ -43,7 +43,9 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     if (CheckIsDataAlreadyInDBorNot(SIGNUP_TABLE_NAME, login_email.getText().toString(), login_password.getText().toString())) {
                         Toast.makeText(LoginActivity.this, "Successfully Logged in!", Toast.LENGTH_SHORT).show();
+                        sharedPreferenceMethod.saveLogin(true);
                         startActivity(new Intent(LoginActivity.this, PriceForLaundry.class));
+                        finish();
                     } else {
                         Toast.makeText(LoginActivity.this, "please sign up first", Toast.LENGTH_SHORT).show();
                     }

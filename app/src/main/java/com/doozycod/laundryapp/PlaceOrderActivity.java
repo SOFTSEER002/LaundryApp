@@ -40,8 +40,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
     int cart_total = 0;
     int month, date, year, hours, minutes;
     List<DBModel> dbModelList = new ArrayList<>();
-    ImageView back_btn;
-
+    ImageView back_btn, cart_items_place, profile_btn;
+    String time;
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
         dbHelper = new DBHelper(this);
 
         back_btn = findViewById(R.id.back_btn_order);
+        cart_items_place = findViewById(R.id.cart_items_place);
+        profile_btn = findViewById(R.id.go_to_profile_p);
         topQty = findViewById(R.id.topQty);
         lowerQty = findViewById(R.id.lowerQty);
         bedsheetQty = findViewById(R.id.bedsheetQty);
@@ -76,6 +78,22 @@ public class PlaceOrderActivity extends AppCompatActivity {
         for (int i = 0; i < dbModelList.size(); i++) {
             Log.e("msg", "onCreate: " + dbModelList.get(i).getFinal_price() + "\n" + dbModelList.get(i).getTop_clothes() + "\n" + dbModelList.get(i).getBedsheets());
         }
+        year = dp.getYear();
+        month = dp.getMonth();
+        date = dp.getDayOfMonth();
+        cart_items_place.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PlaceOrderActivity.this, CartActivity.class));
+            }
+        });
+        profile_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PlaceOrderActivity.this, ProfileActivity.class));
+
+            }
+        });
         dp.setOnDateChangedListener(new DatePicker.OnDateChangedListener() {
             @Override
             public void onDateChanged(DatePicker datePicker, int Year, int Month, int Date) {
@@ -85,7 +103,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
                 date = Date;
             }
         });
-
+        hours = tp.getHour();
+        minutes = tp.getMinute();
         tp.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker timePicker, int hour, int mints) {
@@ -103,7 +122,14 @@ public class PlaceOrderActivity extends AppCompatActivity {
                 int bed_sheets = Integer.parseInt(bedsheetPrice.getText().toString());
                 int others = Integer.parseInt(otherPrice.getText().toString());
                 String day = date + "/" + month + "/" + year;
-                String time = hours + ":" + minutes;
+                if (hours == 0) {
+                    hours = 12;
+                    time = hours + ":" + minutes;
+
+                } else {
+                    time = hours + ":" + minutes;
+
+                }
                 Log.e("msg", "onClick: " + top + "\n" + lower + "\n" + bed_sheets + "\n" + others + "\n" + day + "\n" + time);
                 cart_total = top + lower + bed_sheets + others;
                 if (top == 0 && lower == 0 && bed_sheets == 0 && others == 0) {
@@ -111,6 +137,8 @@ public class PlaceOrderActivity extends AppCompatActivity {
                     return;
                 } else {
                     dbHelper.insert(top, lower, bed_sheets, others,
+                            wash, iron, do_both, cart_total, day, time);
+                    dbHelper.insertTemp(top, lower, bed_sheets, others,
                             wash, iron, do_both, cart_total, day, time);
                 }
                 startActivity(new Intent(PlaceOrderActivity.this, CartActivity.class));

@@ -1,8 +1,8 @@
 package com.doozycod.laundryapp.Models;
 
-public class OrderModel {
-    String order_email, phone_number, address;
-    int column_id;
+public class UserOrderModel {
+
+
     int top_clothes;
     int jeans_lower;
     int bedsheets;
@@ -11,7 +11,29 @@ public class OrderModel {
     int iron_only;
     int doboth;
     int final_price;
-    String date, time;
+    String date;
+    String time;
+
+
+    String email;
+
+    int id;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public int getTop_clothes() {
         return top_clothes;
@@ -91,39 +113,6 @@ public class OrderModel {
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-
-    public int getColumn_id() {
-        return column_id;
-    }
-
-    public void setColumn_id(int coluumn_id) {
-        this.column_id = coluumn_id;
-    }
-
-    public String getOrder_email() {
-        return order_email;
-    }
-
-    public void setOrder_email(String order_email) {
-        this.order_email = order_email;
-    }
-
-    public String getPhone_number() {
-        return phone_number;
-    }
-
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
 

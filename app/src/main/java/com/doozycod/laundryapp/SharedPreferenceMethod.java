@@ -28,6 +28,7 @@ public class SharedPreferenceMethod {
         sp_editior.putString("firstname", spfirst_name);
         sp_editior.putString("lastname", splast_name);
         sp_editior.putString("spphone", spMobileNumber);
+
         sp_editior.commit();
     }
 
@@ -39,6 +40,23 @@ public class SharedPreferenceMethod {
         boolean email = sp.getString("email", "").isEmpty();
         boolean password = sp.getString("password", "").isEmpty();
         return email || password;
+    }
+
+    public void saveLogin(boolean login) {
+        SharedPreferences sp = context.getSharedPreferences("laundryAPP", Context.MODE_PRIVATE);
+        SharedPreferences.Editor sp_editior = sp.edit();
+
+        sp_editior.putBoolean("login", login);
+        sp_editior.commit();
+
+    }
+
+    public boolean getLogin() {
+        SharedPreferences sp = context.getSharedPreferences("laundryAPP", Context.MODE_PRIVATE);
+        SharedPreferences.Editor sp_editior = sp.edit();
+        boolean login = sp.getBoolean("login", false);
+        return login;
+
     }
 
     public void getUser() {

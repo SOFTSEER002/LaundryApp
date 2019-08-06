@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (sharedPreferenceMethod.checkLogin()) {
+                if (!sharedPreferenceMethod.getLogin()) {
                     startActivity(new Intent(SplashActivity.this, SignUpActivity.class));
                     finish();
                 } else {
@@ -35,6 +35,6 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         }, 3000);
-        Log.e("Splash", "onCreate: " + sharedPreferenceMethod.checkLogin());
+        Log.e("Splash", "onCreate: " + sharedPreferenceMethod.getLogin());
     }
 }

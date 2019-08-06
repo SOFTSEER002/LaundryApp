@@ -9,12 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OrderDetailsActivity"></activity>
+        <activity android:name=".SavedCards"></activity>
+        <activity android:name=".OrderDetailsActivity" />
         <activity android:name=".MyOrdersActivity" />
         <activity android:name=".SavedAddress" />
         <activity android:name=".OrderPlacedActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".CartActivity" />
+        <activity
+            android:name=".CartActivity"
+            android:noHistory="true" />
         <activity android:name=".PlaceOrderActivity" />
         <activity android:name=".PriceForLaundry" />
         <activity android:name=".LoginActivity" />
