@@ -3,11 +3,14 @@ package com.doozycod.laundryapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class OrderDetailsActivity extends AppCompatActivity {
     TextView tv_top_clothes, tv_jeans_lower, tv_bedsheets, tv_towels, tv_wash_only, tv_iron_only, tv_final_price, tv_time_and_date, tv_order_id;
     Bundle getExtras;
+    ImageView back_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         tv_time_and_date = findViewById(R.id.order_placed_time);
         tv_final_price = findViewById(R.id.order_cart_price);
         tv_order_id = findViewById(R.id.order_id);
+        back_btn = findViewById(R.id.back_cart_details);
         getExtras = getIntent().getExtras();
 
         tv_order_id.setText("Order No. - " + getExtras.getInt("getId"));
@@ -29,6 +33,13 @@ public class OrderDetailsActivity extends AppCompatActivity {
         tv_jeans_lower.setText(String.valueOf(getExtras.getInt("getJeans_lower")));
         tv_bedsheets.setText(String.valueOf(getExtras.getInt("getBedsheets")));
         tv_towels.setText(String.valueOf(getExtras.getInt("getTowels")));
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         if (getExtras.getInt("getWash_only") == 1) {
             tv_wash_only.setText("Yes");
             tv_iron_only.setText("No");

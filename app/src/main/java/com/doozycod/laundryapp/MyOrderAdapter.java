@@ -96,7 +96,7 @@ public class MyOrderAdapter extends RecyclerView.Adapter<MyOrderAdapter.AddHolde
 
     @Override
     public int getItemCount() {
-        return orderModelList.size();
+        return userOrderModelList.size();
     }
 
     class AddHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

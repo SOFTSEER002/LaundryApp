@@ -15,7 +15,7 @@
         android:padding="15dp">
 
         <ImageView
-            android:id="@+id/back_cart"
+            android:id="@+id/back_cart_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@id/back_cart"
+            android:layout_toRightOf="@id/back_cart_details"
             android:text="Order Details"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#fff" />
